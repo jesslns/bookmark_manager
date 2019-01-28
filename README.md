@@ -18,5 +18,5 @@ so that I can filter bookmarks by tag and mange them.
 ### Domain Model
 
 <div style='float: center'>
-<img style='width: 400px' src="./public/images/domain_model.png">
+<img style='width: 300px' src="./public/images/domain_model.png">
 </div>
