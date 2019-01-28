@@ -17,4 +17,6 @@ so that I can filter bookmarks by tag and mange them.
 
 ### Domain Model
 
-![Domain Model](./public/images/domain_model.png)
+<div style='float: center'>
+<img style='width: 400px' src="./public/images/domain_model.png">
+</div>
