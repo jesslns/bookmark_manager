@@ -20,3 +20,10 @@ so that I can filter bookmarks by tag and mange them.
 <div style='float: center'>
 <img style='width: 300px' src="./public/images/domain_model.png">
 </div>
+
+### Instructions on Using SQL Database
+- Install <b>PostgreSQL</b> `$brew install postgresql`
+- Connect to `psql`
+- Create the database using the `psql` command `CREATE - DATABASE bookmark_manager`;
+- Connect to the database using the `pqsl` command `\c - bookmark_manager`;
+- Run the query we have saved in the file `01_create_bookmarks_table.sql`
