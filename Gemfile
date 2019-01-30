@@ -6,6 +6,7 @@ gem 'rake'
 gem 'shotgun'
 gem 'sinatra'
 gem 'pg'
+gem 'pry'
 
 group :test do
   gem 'capybara'
