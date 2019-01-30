@@ -1,18 +1,14 @@
 require 'pg'
-require 'pry'
 
 class Bookmark
 
   def self.all
+    if ENV['ENVIRONMENT'] == 'test'
+    con = PG.connect( dbname: 'bookmark_manager_test' )
+    else
     con = PG.connect( dbname: 'bookmark_manager' )
+    end
     url = con.exec("SELECT * from bookmarks")
-    p "url 1"
-    p url
-    binding.pry
     url = url.map{|x| x["url"]}
-    p "url 2"
-    p url
   end
 end
-
-bookmarks = Bookmark.all

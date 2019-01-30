@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 
 ruby '2.5.1'
 
+gem 'pg'
+gem 'pry'
 gem 'rake'
 gem 'shotgun'
 gem 'sinatra'
-gem 'pg'
-gem 'pry'
 
 group :test do
   gem 'capybara'
