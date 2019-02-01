@@ -12,7 +12,6 @@ feature 'Update bookmark' do
     click_button('Update')
 
     expect(current_path).to eq '/bookmarks'
-
     expect(page).not_to have_link('Makers Academy', href: 'http://www.makersacademy.com')
     expect(page).to have_link('Yahoo-HK', href: 'http://www.yahoo.com.hk')
 
