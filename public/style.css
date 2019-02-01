@@ -6,4 +6,13 @@
     color: SlateBlue;
     }
 
+  h1{
+    font-family: "Arial";
+    color: SlateBlue;
+    }
+
+  ul {
+      margin-top: 5px;
+      color: Tomato;
+    }
   </style>

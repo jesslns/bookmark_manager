@@ -1,4 +1,5 @@
 require 'pg'
+require 'database_connection'
 
 class Bookmark
 
@@ -11,17 +12,27 @@ class Bookmark
   end
 
   def self.all
-    if ENV['ENVIRONMENT'] == 'test'
-      con = PG.connect( dbname: 'bookmark_manager_test' )
-    else
-      con = PG.connect( dbname: 'bookmark_manager' )
+
+    result = DatabaseConnection.query("SELECT * FROM bookmarks")
+    result.map do |bookmark|
+      Bookmark.new(
+        url: bookmark['url'],
+        title: bookmark['title'],
+        id: bookmark['id']
+      )
     end
-    data = con.exec("SELECT * from bookmarks")
-    data.map do |bookmark|
-      Bookmark.new(id: bookmark["id"], title: bookmark["title"], url: bookmark["url"])
+
+    # if ENV['ENVIRONMENT'] == 'test'
+    #   con = PG.connect( dbname: 'bookmark_manager_test' )
+    # else
+    #   con = PG.connect( dbname: 'bookmark_manager' )
+    # end
+    # data = con.exec("SELECT * from bookmarks")
+    # data.map do |bookmark|
+    #   Bookmark.new(id: bookmark["id"], title: bookmark["title"], url: bookmark["url"])
       # calling Class.new to store (ie wrap) data, to make data its own class object
       # go from being an agency to transfer data to a factory of repackaging into its own product
-    end
+    #end
   end
 
   def self.create(url:, title: )
