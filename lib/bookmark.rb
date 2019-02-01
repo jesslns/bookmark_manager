@@ -22,14 +22,6 @@ class Bookmark
       )
     end
 
-    # if ENV['ENVIRONMENT'] == 'test'
-    #   con = PG.connect( dbname: 'bookmark_manager_test' )
-    # else
-    #   con = PG.connect( dbname: 'bookmark_manager' )
-    # end
-    # data = con.exec("SELECT * from bookmarks")
-    # data.map do |bookmark|
-    #   Bookmark.new(id: bookmark["id"], title: bookmark["title"], url: bookmark["url"])
       # calling Class.new to store (ie wrap) data, to make data its own class object
       # go from being an agency to transfer data to a factory of repackaging into its own product
     #end
@@ -39,41 +31,22 @@ class Bookmark
     # same as passing (url: url, title: title) value by default has same name as key.
     # use of hash is useful when we are not sure what the variable will be
     # return false unless is_url?(url)
-    if ENV['ENVIRONMENT'] == 'test'
-      con = PG.connect(dbname: 'bookmark_manager_test')
-    else
-      con = PG.connect( dbname: 'bookmark_manager' )
-    end
-    result = con.exec("INSERT INTO bookmarks (title, url) VALUES ('#{title}', '#{url}') RETURNING id, title, url")
+
+    result = DatabaseConnection.query("INSERT INTO bookmarks (title, url) VALUES ('#{title}', '#{url}') RETURNING id, title, url")
     Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 
   def self.delete(id:)
-    if ENV['ENVIRONMENT'] == 'test'
-      con = PG.connect(dbname: 'bookmark_manager_test')
-    else
-      con = PG.connect( dbname: 'bookmark_manager' )
-    end
-    con.exec("DELETE FROM bookmarks WHERE id = #{id}")
+    DatabaseConnection.query("DELETE FROM bookmarks WHERE id = #{id}")
   end
 
   def self.update(id:, url:, title:)
-    if ENV['ENVIRONMENT'] == 'test'
-      con = PG.connect(dbname: 'bookmark_manager_test')
-    else
-      con = PG.connect( dbname: 'bookmark_manager' )
-    end
-    result = con.exec("UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = '#{id}' RETURNING id, url, title;")
+    result = DatabaseConnection.query("UPDATE bookmarks SET url = '#{url}', title = '#{title}' WHERE id = '#{id}' RETURNING id, url, title;")
     Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 
   def self.find(id:)
-    if ENV['ENVIRONMENT'] == 'test'
-      con = PG.connect(dbname: 'bookmark_manager_test')
-    else
-      con = PG.connect( dbname: 'bookmark_manager' )
-    end
-    result = con.exec("SELECT * FROM bookmarks WHERE id = #{id};")
+    result = DatabaseConnection.query("SELECT * FROM bookmarks WHERE id = #{id};")
     Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
 end

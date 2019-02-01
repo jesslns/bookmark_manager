@@ -8,13 +8,6 @@ describe DatabaseConnection do
 
       DatabaseConnection.setup('bookmark_manager_test')
     end
-    # describe " .connection" do
-    #   it 'this connection is persistent' do
-    #     connection = DatabaseConnection.setup('bookmark_manager_test')
-    #
-    #     expect(DatabaseConnection.connection).to eq connection
-    #   end
-    # end
 
     describe " .query" do
       it 'executes a query via PG' do
