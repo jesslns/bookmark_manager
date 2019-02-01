@@ -1,20 +1,25 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <!-- <link href="styles.css %>"> -->
-  <link rel=“stylesheet” type=“text/css” href=“style.css”/>
-</head>
+  <!-- <link rel=“stylesheet” type=“text/css” href=“style.css”/>
+</head> -->
 
 <body>
+
 <ul>
-  <% @bookmarks.each do |bookmark| %>
-    <li>      
-      <a href="<%= bookmark.url %>">
+  <% @bookmarks.each do |bookmark| %> <!-- a loop-->
+    <li class="bookmark" id="bookmark-<%= bookmark.id %>"> <!-- assigned each list itme a class and a unique id that equals its database id-->
+      <a href="<%= bookmark.url %>" target="_blank"> <!-- target="_blank" means open link in a new window -->
       <%= bookmark.title %>
       </a>
+      <form action="/bookmarks/<%= bookmark.id %>" method="post">
+      <input type='hidden' name='_method' value='DELETE'/>
+      <input type="submit" value="Delete" />
     </li>
 
   <% end %>
 </ul>
+
 </body>
-</html>
+<!-- </html> -->
