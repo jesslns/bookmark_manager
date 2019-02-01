@@ -12,15 +12,15 @@ class Bookmark
 
   def self.all
     if ENV['ENVIRONMENT'] == 'test'
-    con = PG.connect( dbname: 'bookmark_manager_test' )
+      con = PG.connect( dbname: 'bookmark_manager_test' )
     else
-    con = PG.connect( dbname: 'bookmark_manager' )
+      con = PG.connect( dbname: 'bookmark_manager' )
     end
     data = con.exec("SELECT * from bookmarks")
     data.map do |bookmark|
-    Bookmark.new(id: bookmark["id"], title: bookmark["title"], url: bookmark["url"])
-    # calling Class.new to store (ie wrap) data, to make data its own class object
-    # go from being an agency to transfer data to a factory of repackaging into its own product
+      Bookmark.new(id: bookmark["id"], title: bookmark["title"], url: bookmark["url"])
+      # calling Class.new to store (ie wrap) data, to make data its own class object
+      # go from being an agency to transfer data to a factory of repackaging into its own product
     end
   end
 
@@ -36,4 +36,15 @@ class Bookmark
     result = con.exec("INSERT INTO bookmarks (title, url) VALUES ('#{title}', '#{url}') RETURNING id, title, url")
     Bookmark.new(id: result[0]['id'], title: result[0]['title'], url: result[0]['url'])
   end
+
+  def self.delete(id:)
+    if ENV['ENVIRONMENT'] == 'test'
+      con = PG.connect(dbname: 'bookmark_manager_test')
+    else
+      con = PG.connect( dbname: 'bookmark_manager' )
+    end
+
+    result = con.exec("DELETE FROM bookmarks WHERE id = #{id}")
+  end
+
 end
