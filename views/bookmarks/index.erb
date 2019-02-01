@@ -2,10 +2,10 @@
 <html>
 <head>
   <!-- <link href="styles.css %>"> -->
-  <!-- <link rel=“stylesheet” type=“text/css” href=“style.css”/>
-</head> -->
+  <!-- <link rel=“stylesheet” type=“text/css” href=“./styles.css” />
+</head>
 
-<body>
+<body> -->
 
 <ul>
   <% @bookmarks.each do |bookmark| %> <!-- a loop-->
@@ -16,10 +16,13 @@
       <form action="/bookmarks/<%= bookmark.id %>" method="post">
       <input type='hidden' name='_method' value='DELETE'/>
       <input type="submit" value="Delete" />
+      </form>
+      <form action="/bookmarks/<%= bookmark.id %>/edit" method="get">
+      <input type="submit" value="Edit" />
+      </form>
     </li>
-
   <% end %>
 </ul>
 
-</body>
-<!-- </html> -->
+<!-- </body>
+</html> -->
