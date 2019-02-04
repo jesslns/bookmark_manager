@@ -1,11 +1,19 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <link rel=“stylesheet” type=“text/css” href=“/style.css” />
-</head>
+</head> -->
+
+<style>
+  body {
+    font-family: "Arial";
+    background-color: Turquoise ;
+    color: SlateBlue;
+    }
+</style>
 
 <body>
-  
+
 <h1> Your Bookmarks: </h1>
 <ul>
   <% @bookmarks.each do |bookmark| %> <!-- a loop-->
@@ -23,6 +31,10 @@
     </li>
   <% end %>
 </ul>
+<br>
+<form action="/bookmarks/new">
+<input type="submit" value="Add New Bookmarks" />
+</form>
 
 </body>
 </html>
