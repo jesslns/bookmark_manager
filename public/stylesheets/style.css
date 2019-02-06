@@ -1,0 +1,58 @@
+
+html {
+  height: 100%;
+}
+body {
+  background-image: url('https://s19.postimg.cc/572vgy64z/library.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-direction: column;
+  font-family: "Arial";
+  text-align: center;
+  margin: 5%;
+}
+
+h1{
+  font-family: "Arial";
+  color: white;
+  /* background: rgba(255, 255, 255, 0.5) */
+}
+
+ul {
+  margin-top: 15px;
+  margin-left: 10%;
+  color: Tomato;
+  text-align: left;
+  width: 80%;
+  background: rgba(255, 255, 255, 0.7)
+}
+
+li{
+  color: black;
+  margin: 5px;
+}
+
+form {
+  display: inline;
+}
+
+button {
+  outline:none;
+  height: 30px;
+  text-align: center;
+  border-radius:30px;
+  background: #4169E1;
+  border: 2px solid #fff;
+  color: #fff;
+  letter-spacing:1px;
+  text-shadow:0;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-right: 4px;
+  margin-left: 4px;
+  font:{
+    size:10px;
+    weight:bold;
+  }
+}

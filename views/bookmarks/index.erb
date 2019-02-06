@@ -1,20 +1,22 @@
-<!-- <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <link rel=“stylesheet” type=“text/css” href=“/style.css” />
-</head> -->
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/>
+</head>
 
-<style>
+<!-- <style>
   body {
     font-family: "Arial";
     background-color: Turquoise ;
     color: SlateBlue;
     }
-</style>
+</style> -->
 
 <body>
 
 <h1> Your Bookmarks: </h1>
+
+<!-- <div class="list-box"> -->
 <ul>
   <% @bookmarks.each do |bookmark| %> <!-- a loop-->
     <li class="bookmark" id="bookmark-<%= bookmark.id %>"> <!-- assigned each list itme a class and a unique id that equals its database id-->
@@ -32,8 +34,13 @@
   <% end %>
 </ul>
 <br>
+<!-- </div> -->
 <form action="/bookmarks/new">
-<input type="submit" value="Add New Bookmarks" />
+<button type="submit">Add New Bookmarks</button>
+</form>
+
+<form action="/" >
+  <button type="submit">Home</button>
 </form>
 
 </body>

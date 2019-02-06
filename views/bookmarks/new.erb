@@ -1,22 +1,25 @@
-<!-- <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <link rel=“stylesheet” type=“text/css” href=“/style.css”/>
-</head> -->
-<style>
-  body {
-    font-family: "Arial";
-    background-color: Turquoise ;
-    color: SlateBlue;
-    }
-</style>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/style.css"/>
+</head>
 
 <body>
-  <h1> Add new bookmark </h1>
+
+  <h1> Add New Bookmark </h1>
 <form action="/bookmarks" method="post">
   <input type="text" name="url" placeholder="url"/>
   <input type="text" name="title" placeholder="title"/>
-  <input type="submit" value="Submit"/>
+  <button type="submit">Submit</button>
+
+<br>
+  <form action="/" >
+    <button type="submit">Home</button>
+  </form>
+
+  <form action="/bookmarks">
+  <button type="submit">View Bookmarks</button>
+  </form>
 </form>
 </body>
 </html>
